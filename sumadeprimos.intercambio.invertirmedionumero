@@ -56,14 +56,16 @@ readln;
   inv2:=c.Digito(j+1);
   if(inv2>inv)then
   begin
-    c.InsertarDigito(j,c.Digito(j+1));
+    c.InsertarDigito(j,inv2);
+    c.EliminarDigito(j+1);
+    c.InsertarDigito((j+1),inv);
     c.EliminarDigito(j+2);
-    //c.InsertarDigito((j+1),c.Digito(j));
-
-  end;
-  inc(j);
+    j:=1;
+  end
+  else
+  j:=j+1;
  end;
 
- writeln(c.ObtenerValor);
+ writeln('El resultado es: ',c.ObtenerValor);
  readln;
  end.
