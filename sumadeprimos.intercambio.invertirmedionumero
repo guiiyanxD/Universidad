@@ -1,0 +1,69 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  Unit1 in 'Unit1.pas';
+
+
+  var a,b,c,d:cnumeronatural;
+  i,aux,sum,aux2,aux3,aux4,j,inv,inv2:byte; k:integer;
+begin
+ a:=cnumeronatural.Crear; b:=cnumeronatural.Crear; c:=cnumeronatural.Crear; d:=cnumeronatural.Crear;
+
+ readln(k);
+ a.AsignarValor(k); b.AsignarValor(k); c.AsignarValor(k); d.AsignarValor(k);
+ sum:=0;
+
+//suma de digitos primos
+
+for i := 1 to a.NumeroDigitos do
+ begin
+   aux:=a.Digito(i);
+   if((aux=2)or (aux=3) or (aux=5) or(aux=7)) then
+   sum:=sum+aux;
+ end;
+ writeln(sum);
+ readln;
+
+
+ //cambio de digito
+
+ aux2:=b.Digito(1);
+ aux3:=b.Digito(b.NumeroDigitos);
+
+b.InsertarDigito(1,aux3);
+b.InsertarDigito(b.NumeroDigitos,aux2);
+
+b.EliminarDigito(2);
+b.EliminarDigito(b.NumeroDigitos);
+writeln(b.ObtenerValor);
+readln;
+
+//invertir la mitad del numero
+
+
+
+ aux4:=c.NumeroDigitos div 2;
+ writeln(aux4);
+ readln; j := 1;
+ while(j<aux4) do
+ begin
+  inv:=c.Digito(j);
+  inv2:=c.Digito(j+1);
+  if(inv2>inv)then
+  begin
+    c.InsertarDigito(j,c.Digito(j+1));
+    c.EliminarDigito(j+2);
+    //c.InsertarDigito((j+1),c.Digito(j));
+
+  end;
+  inc(j);
+ end;
+
+ writeln(c.ObtenerValor);
+ readln;
+ end.
